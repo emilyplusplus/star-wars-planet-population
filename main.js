@@ -17,13 +17,15 @@ console.log('Getting data for the planet ' + program.planet + '...');
 
 let planets = people = []
 
-swapi.getPagedResource('/planets').then(data => {
+let planetsPromise = swapi.getPagedResource('/planets').then(data => {
     planets = data
 })
 
-swapi.getPagedResource('/people').then(data => {
+let peoplePromise = swapi.getPagedResource('/people').then(data => {
     people = data
 })
 
-console.log('Total indexed planets found: ' + planets.length)
-console.log('Total indexed people found: ' + people.length)
+Promise.all([planetsPromise, peoplePromise]).then(function(values) {
+    console.log('Total indexed planets found: ' + planets.length)
+    console.log('Total indexed people found: ' + people.length)
+})
