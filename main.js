@@ -15,12 +15,11 @@ if(!program.planet) {
 
 console.log('Searching ' + program.planet + '...');
 
-/*
-swapi.getPlanets().then(data => {
-    console.log(data)
-})
 
-swapi.getPeople().then(data => {
+/*swapi.getPagedResource('/planets').then(data => {
+    console.log(data)
+})*/
+
+swapi.getPagedResource('/planets').then(data => {
     console.log(data)
 })
-*/
