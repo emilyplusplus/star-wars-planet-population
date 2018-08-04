@@ -27,10 +27,23 @@ let peoplePromise = swapi.getPagedResource('/people').then(data => {
     people = data
 })
 
-//Step 3
 Promise.all([planetsPromise, peoplePromise]).then(function(values) {
+
+    //Step 3
     console.log('Total indexed planets found: ' + planets.length)
     console.log('Total indexed people found: ' + people.length)
-})
 
-//Step 4
+    //Step 4
+    let population = {}
+
+    planets.forEach((planet) => {
+        population[planet.name] = people.filter(person => person.homeworld == planet.url).map(person => { return person.name }).join(', ')
+    })
+
+    //Step 5
+    if(population[program.planet].length == 0) {
+        console.error('No native people found :(')
+    } else {
+        console.log('Native people: ' + population[program.planet])
+    }
+})
