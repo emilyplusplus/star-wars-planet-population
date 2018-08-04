@@ -30,8 +30,10 @@ let peoplePromise = swapi.getPagedResource('/people').then(data => {
 Promise.all([planetsPromise, peoplePromise]).then(function(values) {
 
     //Step 3
-    console.log('Total indexed planets found: ' + planets.length)
+    console.log('\nTotal indexed planets found: ' + planets.length)
+    console.log('Planet names: ' + planets.map( planet => { return planet.name }).join(', ') + '\n')
     console.log('Total indexed people found: ' + people.length)
+    console.log('People names: ' + people.map( person => { return person.name }).join(', ') + '\n')
 
     //Step 4
     let population = {}
