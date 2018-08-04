@@ -37,7 +37,13 @@ Promise.all([planetsPromise, peoplePromise]).then(function(values) {
     let population = {}
 
     planets.forEach((planet) => {
-        population[planet.name] = people.filter(person => person.homeworld == planet.url).map(person => { return person.name }).join(', ')
+        let names = people.filter(
+            person => person.homeworld == planet.url
+        ).map(
+            person => { return person.name }
+        ).join(', ')
+
+        population[planet.name] = names
     })
 
     //Step 5
