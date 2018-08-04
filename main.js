@@ -9,17 +9,21 @@ program
   .parse(process.argv);
 
 if(!program.planet) {
-    console.error('No planet entered')
+    console.error('No planet entered, please enter a planet (exiting now)')
     process.exit()
 }
 
-console.log('Searching ' + program.planet + '...');
+console.log('Getting data for the planet ' + program.planet + '...');
 
-
-/*swapi.getPagedResource('/planets').then(data => {
-    console.log(data)
-})*/
+let planets = people = []
 
 swapi.getPagedResource('/planets').then(data => {
-    console.log(data)
+    planets = data
 })
+
+swapi.getPagedResource('/people').then(data => {
+    people = data
+})
+
+console.log('Total indexed planets found: ' + planets.length)
+console.log('Total indexed people found: ' + people.length)
