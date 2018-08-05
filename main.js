@@ -45,13 +45,13 @@ Promise.all([planetsPromise, peoplePromise]).then(function(values) {
             person => { return person.name }
         ).join(', ')
 
-        population[planet.name] = names
+        population[planet.name.toLowerCase()] = names
     })
 
     //Step 5 - Print names of native people for chosen planet, or display appropriate message if no-one is found or planet doesn't exist
-    if(!population[program.planet] || population[program.planet].length == 0) {
+    if(!population[program.planet.toLowerCase()] || population[program.planet.toLowerCase()].length == 0) {
         console.error('No native people found :(')
     } else {
-        console.log('Native people: ' + population[program.planet])
+        console.log('Native people: ' + population[program.planet.toLowerCase()])
     }
 })
