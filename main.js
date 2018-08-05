@@ -4,7 +4,7 @@ const program = require('commander');
 const swapi = require('./lib/swapi')
 
 program
-  .version('0.9.0', '-v, --version')
+  .version('0.9.1', '-v, --version')
   .option('-p, --planet [planet]', 'Planet to list populus from')
   .parse(process.argv);
 
