@@ -49,9 +49,11 @@ Promise.all([planetsPromise, peoplePromise]).then(function(values) {
     })
 
     //Step 5 - Print names of native people for chosen planet, or display appropriate message if no-one is found or planet doesn't exist
-    if(!population[program.planet.toLowerCase()] || population[program.planet.toLowerCase()].length == 0) {
+    if(!population[program.planet.toLowerCase()]) {
+        console.error('Planet "' + program.planet + '" does not exist :(')
+    } else if(population[program.planet.toLowerCase()].length == 0) {
         console.error('No native people found :(')
     } else {
-        console.log('Native people: ' + population[program.planet.toLowerCase()])
+        console.log('People from "' + program.planet + '": ' + population[program.planet.toLowerCase()])
     }
 })
